@@ -3,7 +3,7 @@
  * Plugin Name: Vimeo Badge Widget
  * Plugin URI: http://tylercraft.com/portfolio/vimeo-badge-widget/
  * Description: Displays a badge of recent vimeo videos. Can pull recent videos from a user, group, album or channel.
- * Version: 0.1
+ * Version: 1.1
  * Author: Tyler Craft
  * Author URI: http://tylercraft.com
  *
