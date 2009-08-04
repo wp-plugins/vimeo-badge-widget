@@ -98,27 +98,25 @@ class Vimeo_Badge_Widget extends WP_Widget {
 					$vimeo_call = 'http://vimeo.com/api/v2/channel/'.$vimeo_id.'/videos.json';
 				break;
 		}
+		
+		$response = wp_remote_get($vimeo_call, array('timeout' => 60));
 
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $vimeo_call);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		$ret = curl_exec($ch);
-		curl_close($ch);
-		
-		$ret = json_decode($ret, true);
-		
-		if(sizeof($ret)){
-			if($use_default_styles){
-				echo '<ul style="list-style: none; margin-left: 0; padding-left: 0;">';
-			}else{
-				echo '<ul>';
+		if (! is_wp_error($response) ) {
+			$ret = json_decode($response['body'], true);
+			
+			if(sizeof($ret)){
+				if($use_default_styles){
+					echo '<ul style="list-style: none; margin-left: 0; padding-left: 0;">';
+				}else{
+					echo '<ul>';
+				}
+				for($i = 0; $i < sizeof($ret) && $i < $num_of_videos; $i++){
+					echo '<li><a href="'.$ret[$i]['url'].'">';
+					echo '<img src="'.$ret[$i][$thumbnail_size].'" alt="'.htmlspecialchars($ret[$i]['title']).'"/>';
+					echo '</a></li>';
+				}
+				echo '</ul>';
 			}
-			for($i = 0; $i < sizeof($ret) && $i < $num_of_videos; $i++){
-				echo '<li><a href="'.$ret[$i]['url'].'">';
-				echo '<img src="'.$ret[$i][$thumbnail_size].'" alt="'.htmlspecialchars($ret[$i]['title']).'"/>';
-				echo '</a></li>';
-			}
-			echo '</ul>';
 		}
 
 		/* After widget (defined by themes). */
