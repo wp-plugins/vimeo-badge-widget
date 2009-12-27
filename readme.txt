@@ -2,8 +2,8 @@
 Contributors: tylerc083
 Tags: vimeo, widget, badge
 Requires at least: 2.8
-Tested up to: 2.8
-Stable tag: 1.1
+Tested up to: 2.9
+Stable tag: 1.2
 
 Displays a badge of recent vimeo videos. Can pull recent videos from a user, group, album or channel.
 

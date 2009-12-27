@@ -3,7 +3,9 @@
  * Plugin Name: Vimeo Badge Widget
  * Plugin URI: http://tylercraft.com/portfolio/vimeo-badge-widget/
  * Description: Displays a badge of recent vimeo videos. Can pull recent videos from a user, group, album or channel.
- * Version: 1.1
+ * Version: 1.2
+ * Stable tag: 1.2
+ * Tested up to: 2.9
  * Author: Tyler Craft
  * Author URI: http://tylercraft.com
  *
@@ -152,7 +154,7 @@ class Vimeo_Badge_Widget extends WP_Widget {
 		<!-- Widget Title: Text Input -->
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', 'vimeobadgewidget'); ?></label>
-			<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:100%;" />
+			<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:95%;" />
 		</p>
 
 		<!-- Type: Select Box -->
@@ -174,7 +176,7 @@ class Vimeo_Badge_Widget extends WP_Widget {
 			<strong>If Group:</strong> http://www.vimeo.com/groups/ENTER_THIS/<br/>
 			<strong>If Channel:</strong> http://vimeo.com/channels/ENTER_THIS<br/>
 			</label>
-			<input id="<?php echo $this->get_field_id( 'vimeo_id' ); ?>" name="<?php echo $this->get_field_name( 'vimeo_id' ); ?>" value="<?php echo $instance['vimeo_id']; ?>" style="width:100%;" />
+			<input id="<?php echo $this->get_field_id( 'vimeo_id' ); ?>" name="<?php echo $this->get_field_name( 'vimeo_id' ); ?>" value="<?php echo $instance['vimeo_id']; ?>" style="width:95%;" />
 		</p>
 		
 		<!-- Number: Select Box -->
@@ -215,7 +217,7 @@ class Vimeo_Badge_Widget extends WP_Widget {
 		</p>
 
 		<p>
-			<input class="checkbox" type="checkbox" <?php checked( $instance['use_default_styles'], true ); ?> id="<?php echo $this->get_field_id( 'use_default_styles' ); ?>" name="<?php echo $this->get_field_name( 'use_default_styles' ); ?>" /> 
+			<input class="checkbox" type="checkbox" <?php if($instance['use_default_styles'] == true || $instance['use_default_styles'] == 'on'){echo 'checked';} ?> id="<?php echo $this->get_field_id( 'use_default_styles' ); ?>" name="<?php echo $this->get_field_name( 'use_default_styles' ); ?>" /> 
 			<label for="<?php echo $this->get_field_id( 'use_default_styles' ); ?>"><?php _e('Use Default Styles', 'vimeobadgewidget'); ?></label>
 		</p>
 
